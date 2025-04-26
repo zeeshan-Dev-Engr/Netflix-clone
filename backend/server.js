@@ -1,5 +1,5 @@
 import express from "express";
-import path from "path";
+
 import authRoutes from './routes/auth.js';
 import moviesRoutes from './routes/moviesRoutes.js';
 import searchRoutes from './routes/searchRoutes.js';
@@ -13,8 +13,8 @@ import { fileURLToPath } from 'url'; // important for __dirname in ES6 modules
 const app = express();
 
 // Setup __dirname correctly
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
 // Middlewares
 app.use(express.json());
@@ -27,13 +27,12 @@ app.use("/api/v1/tv", protectRoute, tvRoutes);
 app.use("/api/v1/search", protectRoute, searchRoutes);
 
 // Serve Frontend
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/dist")));
-  
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
-  });
-}
+// if (ENV_VARS.NODE_ENV === "production") {
+//   app.use(express.static(path.join(__dirname, "/frontend/dist")));
+//   app.get("*", (req, res) => {
+//     res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+//   });
+// }
 
 // Start server
 const PORT = ENV_VARS.PORT || 3000;
