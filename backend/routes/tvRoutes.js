@@ -7,6 +7,6 @@ routes.get("/trending",trendingtv)
 routes.get("/:id/trailer",gettvtrailer)
 routes.get("/:id/details",gettvdetails)
 routes.get("/:id/similarmovies",getsimilartv)
-routes.get("/:category",gettvByCategory)
+routes.get("/category/:category",gettvByCategory)
 
 export default routes;

@@ -19,7 +19,7 @@ const MovieSlider = ({ category }) => {
 	useEffect(() => {
         const getContent = async () => {
             try {
-                const res = await axios.get(`/api/v1/${contentType}/${category}`);
+                const res = await axios.get(`/api/v1/${contentType}/category/${category}`);
                 console.log("Content fetched:", res.data); // debug
                 setContent(res.data?.trailer?.results || []); // fallback to empty array
             } catch (err) {
