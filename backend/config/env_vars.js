@@ -8,4 +8,5 @@ export const ENV_VARS={
     JWT_SECRET:process.env.JWT_SECRET || "secret",
     NODE_ENV:process.env.NODE_ENV || "development",
     TMDB_API_KEY:process.env.TMDB_API_KEY || "your_api_key",
+    FRONTEND_URL:process.env.FRONTEND_URL || "https://your-frontend-url.vercel.app",
 }

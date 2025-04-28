@@ -9,6 +9,7 @@ import { ENV_VARS } from "./config/env_vars.js";
 import { connectDB } from "./config/db.js";
 import { protectRoute } from "./middelware/protectRoute.js";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 // important for __dirname in ES6 modules
 
 const app = express();
@@ -20,6 +21,10 @@ const __dirname = path.dirname(__filename);
 // Middlewares
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors({
+  origin: ENV_VARS.FRONTEND_URL || "https://your-frontend-url.vercel.app",
+  credentials: true
+}));
 
 // Your API routes
 app.use("/api/v1/auth", authRoutes);

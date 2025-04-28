@@ -1,9 +1,9 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
-import Navbar from "../compoments/Navbar.jsx";
+import Navbar from "../compoments/Navbar";
 import { SMALL_SIZE_URL } from "../utils/baseUrl.js";
 import { Trash } from "lucide-react";
 import toast from "react-hot-toast";
+import api from "../utils/axios.js";
 
 function formatDate(dateString) {
 	// Create a Date object from the input date string
@@ -26,7 +26,7 @@ const SearchHistoryPage = () => {
 	useEffect(() => {
 		const getSearchHistory = async () => {
 			try {
-				const res = await axios.get(`/api/v1/search/history`);
+				const res = await api.get(`/api/v1/search/history`);
 				setSearchHistory(res.data.content);
 			} catch (error) {
 				setSearchHistory([]);
@@ -37,7 +37,7 @@ const SearchHistoryPage = () => {
 
 	const handleDelete = async (entry) => {
 		try {
-			await axios.delete(`/api/v1/search/history/${entry.id}`);
+			await api.delete(`/api/v1/search/history/${entry.id}`);
 			setSearchHistory(searchHistory.filter((item) => item.id !== entry.id));
 		} catch (error) {
 			toast.error("Failed to delete search item");
