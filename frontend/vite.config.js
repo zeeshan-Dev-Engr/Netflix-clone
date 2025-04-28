@@ -14,5 +14,10 @@ export default defineConfig(({ mode }) => {
         },
       },
     } : {},
+    build: {
+      sourcemap: true,
+      minify: 'terser',
+      cssMinify: true,
+    },
   }
 })
