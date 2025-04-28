@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Navbar from "../compoments/Navbar";
-import { ORIGNAL_SIZE_img_URL } from "../utils/baseUrl.js";
+import Navbar from "../compoments/Navbar.jsx";
+import { SMALL_SIZE_URL } from "../utils/baseUrl.js";
 import { Trash } from "lucide-react";
 import toast from "react-hot-toast";
 
@@ -68,9 +68,9 @@ const SearchHistoryPage = () => {
 					{searchHistory?.map((entry) => (
 						<div key={entry.id} className='bg-gray-800 p-4 rounded flex items-start'>
 							<img
-								src={ORIGNAL_SIZE_img_URL + entry.Image}
+								src={SMALL_SIZE_URL + entry.Image}
 								alt='History image'
-								className='size-16 rounded-full object-cover mr-4'
+								className='w-16 h-16 rounded-full object-contain bg-gray-900 p-1 mr-4'
 							/>
 							<div className='flex flex-col'>
 								<span className='text-white text-lg'>{entry.title}</span>
