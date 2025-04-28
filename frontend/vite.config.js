@@ -6,6 +6,7 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react(), tailwindcss()],
     server: mode === 'development' ? {
+      port: 5173,
       proxy: {
         '/api': {
           target: 'http://localhost:3000',
