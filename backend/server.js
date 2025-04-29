@@ -22,7 +22,7 @@ const __dirname = path.dirname(__filename);
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-  origin: ENV_VARS.FRONTEND_URL || "https://your-frontend-url.vercel.app",
+  origin: true, // Allow all origins for testing
   credentials: true
 }));
 
@@ -42,6 +42,12 @@ if (ENV_VARS.NODE_ENV === "production") {
     res.sendFile(path.resolve(rootDir, "frontend", "dist", "index.html"));
   });
 }
+
+app.get("/", (req, res) => {
+  res.send({
+    message: "API is running"
+  });
+});
 
 // Start server
 const PORT = ENV_VARS.PORT || 3000;
