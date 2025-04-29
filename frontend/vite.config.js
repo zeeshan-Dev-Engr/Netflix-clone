@@ -19,5 +19,10 @@ export default defineConfig(({ mode }) => {
       minify: 'esbuild',
       cssMinify: true,
     },
+    define: {
+      'process.env.VITE_API_URL': mode === 'production' 
+        ? '"https://your-backend-domain.vercel.app"'  // اپنے بیک اینڈ کے ڈومین کو یہاں لکھیں
+        : '"http://localhost:3000"'
+    }
   }
 })

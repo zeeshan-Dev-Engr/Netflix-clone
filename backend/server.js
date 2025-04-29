@@ -22,7 +22,9 @@ const __dirname = path.dirname(__filename);
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-  origin: true, // Allow all origins for testing
+  origin: ENV_VARS.NODE_ENV === "production" 
+    ? "https://your-frontend-domain.vercel.app"  // اپنے فرنٹ اینڈ کے ڈومین کو یہاں لکھیں
+    : "http://localhost:5173",
   credentials: true
 }));
 
