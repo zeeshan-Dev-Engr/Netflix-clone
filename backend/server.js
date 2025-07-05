@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
   origin: ENV_VARS.NODE_ENV === "production" 
-    ? "https://your-frontend-domain.vercel.app"  // اپنے فرنٹ اینڈ کے ڈومین کو یہاں لکھیں
+    ? "https://your-frontend-domain.vercel.app"  
     : "http://localhost:5173",
   credentials: true
 }));
@@ -46,9 +46,7 @@ if (ENV_VARS.NODE_ENV === "production") {
 }
 
 app.get("/", (req, res) => {
-  res.send({
-    message: "API is running"
-  });
+  res.send("Backend is Running 🚀");
 });
 
 // Start server
